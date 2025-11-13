@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratnala Sumith Kumar | Portfolio</title>
+    <!-- We will use a modern, clean font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- We are embedding all styles directly in the HTML file for a single-file solution -->
+    <style>
+        /* --- CSS Variables and Base Styles --- */
+        :root {
+            /* --- ENHANCED UI: New Professional Blue Color Palette (Dark Mode Default) --- */
+            --primary-color: #3B82F6; /* Blue 500 */
+            --primary-hover: #2563EB; /* Blue 600 */
+            --secondary-color: #6c757d;
+            
+            /* Light Mode Vars (set via [data-theme="light"]) */
+            --bg-light: #F9FAFB; /* Slate 50 */
+            --bg-card-light: #FFFFFF;
+            --text-light-primary: #1F2937; /* Slate 800 */
+            --text-light-secondary: #4B5563; /* Slate 600 */
+            --nav-bg-light: rgba(255, 255, 255, 0.7);
+            --nav-border-light: rgba(255, 255, 255, 0.4);
+
+            /* Dark Mode Vars (default) */
+            --bg-dark: #111827; /* Slate 900 */
+            --bg-card-dark: #1F2937; /* Slate 800 */
+            --text-dark-primary: #F3F4F6; /* Slate 100 */
+            --text-dark-secondary: #9CA3AF; /* Slate 400 */
+            --nav-bg-dark: rgba(31, 41, 55, 0.7); /* Slate 800 w/ alpha */
+            --nav-border-dark: rgba(255, 255, 255, 0.1);
+
+            /* Assign defaults (Dark Mode) */
+            --bg-body: var(--bg-dark);
+            --bg-card: var(--bg-card-dark);
+            --bg-section-even: var(--bg-card-dark);
+            --text-primary: var(--text-dark-primary);
+            --text-secondary: var(--text-dark-secondary);
+            --nav-bg: var(--nav-bg-dark);
+            --nav-border: var(--nav-border-dark);
+            --svg-icon-color: var(--text-primary);
+            --card-border: var(--nav-border-dark);
+        }
+
+        /* --- ENHANCED UI: Light Mode Theme --- */
+        [data-theme="light"] {
+            --bg-body: #FFFFFF;
+            --bg-card: var(--bg-card-light);
+            --bg-section-even: var(--bg-light);
+            --text-primary: var(--text-light-primary);
+            --text-secondary: var(--text-light-secondary);
+            --nav-bg: var(--nav-bg-light);
+            --nav-border: rgba(0, 0, 0, 0.1);
+            --svg-icon-color: var(--text-light-primary);
+            --card-border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Enables smooth scrolling when clicking nav links */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            /* --- ENHANCED UI: Themed Background/Color --- */
+            background-color: var(--bg-body);
+            color: var(--text-secondary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            /* Responsive padding */
+            padding: 0 2rem;
+        }
+
+        section {
+            /* Generous padding for each content block */
+            padding: 5rem 0;
+            overflow: hidden;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--bg-section-even);
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            /* --- ENHANCED UI: Themed Text --- */
+            color: var(--text-primary);
+            font-weight: 800;
+            /* --- ENHANCED UI: Icon Styling --- */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        /* --- ENHANCED UI: Themed SVG Icons --- */
+        h2 svg {
+            stroke: var(--svg-icon-color);
+            transition: stroke 0.3s ease;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            /* --- ENHANCED UI: Themed Text --- */
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        /* --- Reusable Button Styles --- */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            /* --- ENHANCED UI: Shadow matches primary color --- */
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: #fff;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Header & Navigation Bar --- */
+        #main-nav {
+            position: fixed;
+            /* --- ENHANCED UI: Floating Nav Bar --- */
+            top: 1.5rem; /* Add spacing from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%; /* Not full width */
+            max-width: 1100px; /* Match the container */
+            border-radius: 12px; /* Rounded corners */
+            
+            /* --- ENHANCED UI: Glassmorphism --- */
+            background: var(--nav-bg); /* More transparent */
+            backdrop-filter: blur(12px); /* More blur */
+            border: 1px solid var(--nav-border); /* Lighter border */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Softer shadow */
+            /* --- End of Glassmorphism --- */
+            transition: background-color 0.3s ease, border 0.3s ease;
+            z-index: 1000;
+        }
+
+        #main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
+        }
+
+        #main-nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            /* --- ENHANCED UI: Themed Text --- */
+            color: var(--text-primary);
+            flex-shrink: 0; /* Prevents logo from shrinking on mobile */
+            font-family: 'monospace'; /* Make logo stand out */
+        }
+
+        #main-nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center; /* Align items for toggle */
+        }
+
+        #main-nav ul li {
+            margin-left: 2rem;
+        }
+
+        #main-nav ul a {
+            /* --- ENHANCED UI: Themed Text --- */
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        #main-nav ul a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        /* Mobile Menu (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            /* --- ENHANCED UI: Themed Text --- */
+            background: var(--text-primary);
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+        /* --- Animate hamburger icon --- */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* --- ENHANCED UI: Theme Toggle Button --- */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+        }
+        /* Hide one icon based on theme */
+        [data-theme="dark"] .sun-icon { display: block; }
+        [data-theme="dark"] .moon-icon { display: none; }
+        [data-theme="light"] .sun-icon { display: none; }
+        [data-theme="light"] .moon-icon { display: block; }
+
+        
+
+        /* --- Hero Section --- */
+        #hero {
+            /* Offset for the fixed navigation bar */
+            padding-top: 10rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff; /* Text color for the gradient */
+            
+            /* --- REMOVED: Replaced gradient with dark BG and particle canvas --- */
+            background-color: var(--bg-body); /* Clean background */
+            position: relative; 
+        }
+
+        /* --- REMOVED: Particle Canvas Styling --- */
+        
+        /* --- Hero Content (inside .container) --- */
+        #hero .container {
+            /* Position content on top of canvas */
+            z-index: 2; 
+            position: relative;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        #hero .subtitle {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 2.5rem 0;
+            color: var(--text-secondary);
+            /* Ensure height is stable during typing */
+            min-height: 2.5rem;
+        }
+        
+        #hero .subtitle #dynamic-text {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .hero-buttons .btn:first-child {
+            background: #fff;
+            color: var(--primary-color);
+        }
+        .hero-buttons .btn:first-child:hover {
+            background: #eee;
+            color: var(--primary-hover);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+        .hero-buttons .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff; /* Explicitly set text color */
+        }
+        .hero-buttons .btn-secondary:hover {
+            background: #fff;
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- Grid & Card Styles (Used for Experience & Projects) --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column */
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            /* --- ENHANCED UI: Themed Card --- */
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Makes cards in a row equal height */
+            border: 1px solid var(--card-border);
+            /* --- REMOVED: 3D TILT --- */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease, border 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            /* --- ENHANCED UI: Clean Hover Effect --- */
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+        
+        .card .company-date {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            flex-grow: 1; /* Pushes footer to bottom */
+        }
+        
+        .card ul li {
+            position: relative;
+            margin-bottom: 0.75rem;
+            padding-left: 1.75rem; /* Space for the icon */
+            color: var(--text-secondary);
+        }
+        
+        .card ul li::before {
+            content: '•'; /* Default bullet */
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            position: absolute;
+            left: 0.25rem;
+            top: 0;
+        }
+        
+        .card .card-footer {
+            margin-top: 2rem; /* Space between list and footer */
+        }
+        
+        .card .tech {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card .links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* --- ENHANCED UI: Bento Grid for Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4-column base */
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            /* --- ENHANCED UI: Themed Card --- */
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+            transition: background-color 0.3s ease, border 0.3s ease, transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skill-category ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary); /* Use softer text color */
+        }
+
+        /* --- Achievements Section --- */
+        #achievements ul {
+            list-style: none;
+            max-width: 800px;
+            margin: 3rem auto 0 auto;
+        }
+
+        #achievements li {
+            position: relative;
+            padding: 0.75rem 0 0.75rem 3rem;
+            font-size: 1.1rem;
+            /* --- ENHANCED UI: Themed Card --- */
+            border-bottom: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+        
+        #achievements li:last-child {
+            border-bottom: none;
+        }
+
+        #achievements li::before {
+            content: '🏆'; /* Trophy emoji */
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            /* --- ENHANCED UI: Themed Text --- */
+            color: var(--text-secondary);
+        }
+
+        #contact-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        #contact-links .btn {
+            font-size: 1.1rem;
+        }
+        
+        /* This is the email text that will be copied */
+        #email-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            /* --- ENHANCED UI: Themed --- */
+            color: var(--text-primary);
+            background-color: var(--bg-card);
+            border: 1px solid var(--card-border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #copy-success {
+            display: none;
+            color: green;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            /* --- ENHANCED UI: Themed --- */
+            background: var(--bg-dark);
+            color: var(--text-dark-secondary);
+            text-align: center;
+            padding: 2.5rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        footer p {
+            /* --- ENHANCED UI: Themed --- */
+            color: var(--text-dark-secondary);
+            opacity: 0.8; /* Make footer text a bit softer */
+        }
+
+        /* --- ENHANCED UI: Scroll Animation Classes --- */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        [data-animate].visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+
+        /* Laptops / Small Desktops */
+        @media(min-width: 769px) {
+            .grid-2 {
+                /* Enable 2-column grid on larger screens */
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* Tablets & Mobile Phones */
+        @media(max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero .subtitle {
+                font-size: 1.25rem;
+            }
+
+            /* --- ENHANCED UI: Revert floating nav on mobile --- */
+            #main-nav {
+                top: 0;
+                width: 100vw; /* Ensure full width */
+                border-radius: 0;
+                border: none;
+                left: 0;
+                transform: none;
+            }
+
+            /* Mobile Navigation */
+            #main-nav .container {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                /* Position hamburger icon */
+                order: 2;
+            }
+            
+            #main-nav .logo {
+                order: 1;
+            }
+            
+            #main-nav ul {
+                display: none; /* Hide nav links by default */
+                flex-direction: column;
+                width: 100%;
+                order: 3;
+                text-align: center;
+                margin-top: 1rem;
+                background-color: var(--bg-card); /* Use card bg for mobile menu */
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            #main-nav ul.active {
+                display: flex; /* Show when active */
+            }
+
+            #main-nav ul li {
+                margin: 0;
+            }
+            
+            #main-nav ul a {
+                display: block;
+                padding: 1.25rem;
+                width: 100%;
+                border-bottom: 1px solid var(--card-border);
+            }
+            #main-nav ul li:last-child a {
+                border-bottom: none;
+            }
+            #main-nav ul a:hover {
+                background-color: var(--bg-section-even);
+                border-bottom-color: var(--card-border); /* Keep hover border consistent */
+            }
+
+            /* --- ENHANCED UI: Bento Grid Responsiveness --- */
+            /* 1-column layout on mobile */
+            .skills-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            .skill-category[data-span="1"],
+            .skill-category[data-span="2"],
+            .skill-category[data-span="4"] { 
+                grid-column: span 1;
+            }
+        }
+        
+        /* 2-column layout on tablet */
+        @media(min-width: 769px) and (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .skill-category[data-span="1"] { grid-column: span 1; }
+            .skill-category[data-span="2"] { grid-column: span 2; }
+            .skill-category[data-span="4"] { grid-column: span 2; }
+        }
+        
+        /* 4-column layout on desktop (from base styles) */
+        @media(min-width: 1025px) {
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .skill-category[data-span="1"] { grid-column: span 1; }
+            .skill-category[data-span="2"] { grid-column: span 2; }
+            .skill-category[data-span="4"] { grid-column: span 4; }
+        }
+
+        /* --- REMOVED: Cursor Orb --- */
+
+    </style>
+</head>
+<body>
+    
+    <!-- REMOVED: Cursor Orb -->
+
+    <!-- Header / Navigation -->
+    <nav id="main-nav">
+        <div class="container">
+            <!-- --- ENHANCED UI: Added Logo --- -->
+            <a href="#" class="logo">&lt;/&gt;</a>
+            <!-- Hamburger Menu Icon -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Navigation Links -->
+            <ul id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- --- ENHANCED UI: Theme Toggle Button --- -->
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <!-- REMOVED: Particle Canvas Background -->
+        <div class="container">
+            <h1>Ratnala Sumith Kumar</h1>
+            <!-- --- ENHANCED UI: Subtitle ready for typewriter --- -->
+            <p class="subtitle">
+                I build <span id="dynamic-text"></span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="https://github.com/sumith95023" target="_blank" class="btn btn-secondary">View GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <!-- ENHANCED UI: Added SVG Icon -->
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                Experience
+            </h2>
+            <div class="grid-2">
+                <!-- Card 1: DBS Tech -->
+                <!-- ENHANCED UI: Added data-animate for scroll effect -->
+                <div class="card" data-animate>
+                    <h3>Software Engineering Intern</h3>
+                    <p class="company-date">DBS Tech (Jun 2025 - Present)</p>
+                    <ul>
+                        <li>Designed & deployed CI/CD pipeline with Jenkins, Docker & AWS, accelerated deployments by 40%.</li>
+                        <li>Built automated SQL schema migration system for MariaDB, reduced errors by 25% & improved reliability.</li>
+                        <li>Enhanced deployment security with SSH-based access & Docker Hub authentication.</li>
+                    </ul>
+                </div>
+                <!-- Card 2: Grig Technologies -->
+                <!-- ENHANCED UI: Added data-animate for scroll effect -->
+                <div class="card" data-animate>
+                    <h3>Software Intern</h3>
+                    <p class="company-date">Grig Technologies (Jun 2024 - Jul 2024)</p>
+                    <ul>
+                        <li>Designed scalable React components, cutting frontend load times by 30%.</li>
+                        <li>Partnered with backend engineers to design and integrate REST APIs, strengthening scalability & aligning with user needs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <!-- ENHANCED UI: Added SVG Icon -->
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Featured Projects
+            </h2>
+            <div class="grid-2">
+                <!-- Card 1: Univox -->
+                <!-- ENHANCED UI: Added data-animate for scroll effect -->
+                <div class="card" data-animate>
+                    <h3>Univox - Cross Language Content Localization Platform</h3>
+                    <ul>
+                        <li>Engineered a real-time ML pipeline for translation, voice cloning & dubbing, reducing manual effort by 65%.</li>
+                        <li>Trained custom RVC ML models with 80%+ similarity; optimized latency by 30% for near real-time throughput.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <p class="tech">Tech: React, FastAPI, Python, RVC, gTTS, MoviePy</p>
+                        <div class="links">
+                            <!-- Placeholder links. Replace "#" with your actual demo/repo URLs -->
+                            <a href="#" class="btn">Demo</a>
+                            <a href="#" class="btn">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: AI Chatbot -->
+                <!-- ENHANCED UI: Added data-animate for scroll effect -->
+                <div class="card" data-animate>
+                    <h3>AI-Powered FAQ Chatbot (RAG + LLM)</h3>
+                    <ul>
+                        <li>Built a retrieval-augmented chatbot with 90%+ accuracy and &lt;200ms response time.</li>
+                        <li>Implemented FAISS vector search, cut query latency by 40%, with continuous learning feedback loop.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <p class="tech">Tech: Microsoft Phi-3, FAISS, MongoDB, Node.js, React</p>
+                        <div class="links">
+                            <!-- Placeholder links. Replace "#" with your actual demo/repo URLs -->
+                            <a href="#" class="btn">Demo</a>
+                            <a href="#" class="btn">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="container">
+            <!-- ENHANCED UI: Added SVG Icon -->
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                Achievements & Recognition
+            </h2>
+            <ul>
+                <!-- ENHANCED UI: Added data-animate for scroll effect -->
+                <li data-animate>1st Place (5 Lakh rupees) - NPCI's Bharat AI Quest 2025, recognised as Bharat AI Elite.</li>
+                <li data-animate>2nd Place - "Aadi Antha Prerena" Startup Pitch Competition, E-Cell.</li>
+                <li data-animate>Semi-Finalist Eureka! Business Model Summit 2025, IIT Bombay (Univox project).</li>
+                <li data-animate>Solved 500+ DSA problems (250+ Medium/Hard) across LeetCode, CodeChef & GFG.</li>
+                <li data-animate>Global Ranks: 250/25K (Codechef Starters 206) | 623/25K (Codeforces 1064).</li>
+                <li data-animate>Certified in DSA (NPTEL) and Prompt Design for Generative AI (Google).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <!-- ENHANCED UI: Added SVG Icon -->
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                Skills
+            </h2>
+            <!-- --- ENHANCED UI: Bento Grid Layout --- -->
+            <div class="skills-grid">
+                <!-- ENHANCED UI: Added data-span attributes -->
+                <div class="skill-category" data-animate data-span="2">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Docker</li>
+                        <li>Jenkins</li>
+                        <li>AWS</li>
+                    </ul>
+                </div>
+                <div class="skill-category" data-animate data-span="1">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
+                <div class="skill-category" data-animate data-span="1">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>MariaDB</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </div>
+                <div class="skill-category" data-animate data-span="4">
+                    <h3>Core Competencies</h3>
+                    <ul>
+                        <li>Data Structures & Algorithms</li>
+                        <li>OOP & System Design</li>
+                        <li>Operating Systems & DBMS</li>
+                        <li>Computer Networks</li>
+                        <li>Machine Learning & CI/CD</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <!-- ENHANCED UI: Added SVG Icon -->
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg>
+                Get In Touch
+            </h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
+            <div id="contact-links">
+                <a href="https://github.com/sumith95023" target="_blank" class="btn">
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/sumithkumar123" target="_blank" class="btn">
+                    LinkedIn
+                </a>
+                <!-- The email and copy button -->
+                <span id="email-text">sumith95023@gmail.com</span>
+                <button id="copy-email-btn" class="btn btn-secondary">Copy Email</button>
+            </div>
+            <!-- This message appears on successful copy -->
+            <span id="copy-success">Email copied to clipboard!</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ratnala Sumith Kumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- All JavaScript is embedded here -->
+    <script>
+        // --- ENHANCED UI: Scroll Animation Observer ---
+        const animatedElements = document.querySelectorAll('[data-animate]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once it's visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            // Toggle the 'active' class on the nav links list
+            navLinks.classList.toggle('active');
+            
+            // Optional: Animate hamburger icon
+            menuToggle.classList.toggle('active');
+        });
+
+        // --- Close mobile menu when a link is clicked ---
+        // This improves user experience on mobile
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // --- ENHANCED UI: Theme Toggle Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const docElement = document.documentElement; // The <html> element
+        
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            docElement.setAttribute('data-theme', savedTheme);
+        } else {
+            // Default to dark if no preference
+            docElement.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = docElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            docElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+
+        // --- ENHANCED UI: Typewriter Effect ---
+        const dynamicText = document.getElementById('dynamic-text');
+        const phrases = [
+            "AI-driven solutions.",
+            "full-stack applications.",
+            "scalable DevOps pipelines."
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const delay = 2000;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // Deleting
+                charIndex--;
+                dynamicText.textContent = currentPhrase.substring(0, charIndex);
+            } else {
+                // Typing
+                charIndex++;
+                dynamicText.textContent = currentPhrase.substring(0, charIndex);
+            }
+
+            let currentSpeed = isDeleting ? deleteSpeed : typeSpeed;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Pause at end of phrase
+                currentSpeed = delay;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next phrase
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            setTimeout(typeWriter, currentSpeed);
+        }
+
+        // Start the typewriter on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (dynamicText) {
+                typeWriter();
+            }
+        });
+
+        /* * --- REMOVED: 3D Tilt Effect on Cards ---
+         */
+        
+        /* * --- REMOVED: Cursor-Following Orb ---
+         */
+
+        // --- ENHANCED UI: Copy Email to Clipboard ---
+        const copyBtn = document.getElementById('copy-email-btn');
+        const emailText = document.getElementById('email-text');
+        const copySuccess = document.getElementById('copy-success');
+
+        if (copyBtn && emailText && copySuccess) {
+            copyBtn.addEventListener('click', () => {
+                const email = emailText.textContent;
+                navigator.clipboard.writeText(email).then(() => {
+                    copySuccess.style.display = 'block';
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copySuccess.style.display = 'none';
+                        copyBtn.textContent = 'Copy Email';
+                    }, 2000);
+                });
+            });
+        }
+
+        /* * --- REMOVED: Particle Network Background ---
+         */
+
+    </script>
+</body>
+</html>
